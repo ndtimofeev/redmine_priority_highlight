@@ -49,7 +49,7 @@ deletes the field together with the colors.
 ## Known limitations
 
 - Only issue lists of saved queries; Gantt, calendar, issue page and e-mails are not covered.
-- The checkbox-like control in the query form is injected by JavaScript, because
+- The mode select in the query form is injected by JavaScript, because
   `queries/_form.html.erb` has no hook.
 - The layout head hook reads the color map on every page (two small queries).
 - Dark themes are untested.

@@ -10,8 +10,10 @@ Redmine::Plugin.register :redmine_priority_highlight do
   settings default: {'color_field_id' => nil}
 end
 
-Rails.configuration.to_prepare do
-  unless IssueQuery.include?(RedminePriorityHighlight::IssueQueryPatch)
-    IssueQuery.prepend RedminePriorityHighlight::IssueQueryPatch
-  end
+# Redmine runs this file inside its own to_prepare callback (see
+# Redmine::PluginLoader.load), so it is executed again on every code reload.
+# A nested Rails.configuration.to_prepare would be registered too late and
+# never run, so the patch is applied directly.
+unless IssueQuery.include?(RedminePriorityHighlight::IssueQueryPatch)
+  IssueQuery.prepend RedminePriorityHighlight::IssueQueryPatch
 end

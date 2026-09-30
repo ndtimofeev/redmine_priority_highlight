@@ -1,10 +1,15 @@
 module RedminePriorityHighlight
   class Hooks < Redmine::Hook::ViewListener
+    # Runs on every page, so a failure here must never break Redmine:
+    # it only costs the highlighting.
     def view_layouts_base_html_head(context)
       map = RedminePriorityHighlight.color_map
       href = priority_highlight_path(v: Stylesheet.digest(map, VERSION), format: 'css')
 
       tag.link(rel: 'stylesheet', href: href) + query_form_script(context[:controller])
+    rescue StandardError => e
+      Rails.logger.error "redmine_priority_highlight: #{e.class}: #{e.message}"
+      ''.html_safe
     end
 
     private
@@ -16,7 +21,7 @@ module RedminePriorityHighlight
                                  %w(new edit create update).include?(controller.action_name)
 
       query = controller.instance_variable_get(:@query)
-      return ''.html_safe unless query.is_a?(IssueQuery)
+      return ''.html_safe unless query.is_a?(IssueQuery) && query.respond_to?(:priority_highlight)
       return ''.html_safe if controller.params[:gantt] || controller.params[:calendar]
 
       choices = [[nil, :label_priority_highlight_none]] +

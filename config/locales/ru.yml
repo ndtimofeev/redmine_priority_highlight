@@ -1,0 +1,6 @@
+ru:
+  field_priority_highlight: Подсветка по приоритету
+  label_priority_highlight_none: Нет
+  label_priority_highlight_cell: Ячейка приоритета
+  label_priority_highlight_row: Вся строка
+  label_priority_highlight_stripe: Полоса слева

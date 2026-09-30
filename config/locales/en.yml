@@ -1,0 +1,6 @@
+en:
+  field_priority_highlight: Highlight by priority
+  label_priority_highlight_none: None
+  label_priority_highlight_cell: Priority cell
+  label_priority_highlight_row: Whole row
+  label_priority_highlight_stripe: Stripe on the left

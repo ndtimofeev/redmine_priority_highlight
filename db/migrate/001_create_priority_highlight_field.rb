@@ -1,4 +1,4 @@
-class CreatePriorityHighlightField < ActiveRecord::Migration[8.1]
+class CreatePriorityHighlightField < ActiveRecord::Migration[7.2]
   FIELD_NAME = 'Highlight color'.freeze
 
   def up

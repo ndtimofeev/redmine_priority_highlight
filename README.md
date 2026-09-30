@@ -62,3 +62,8 @@ The pure parts run without Redmine:
 ruby test/unit/default_scheme_test.rb
 ruby test/unit/stylesheet_test.rb
 ```
+
+## License
+
+GPL-2.0-or-later, the same as Redmine. See [LICENSE](LICENSE).
+The default colors are taken from [Open Color](https://yeun.github.io/open-color/) (MIT).

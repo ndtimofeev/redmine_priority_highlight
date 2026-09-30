@@ -24,7 +24,7 @@ module RedminePriorityHighlight
 
     # Changes with the colors and with the plugin version (the mode rules),
     # so it can version the stylesheet URL.
-    def self.digest(map, version = VERSION)
+    def self.digest(map, version)
       Digest::SHA1.hexdigest([version, map.sort].to_s)[0, 12]
     end
 

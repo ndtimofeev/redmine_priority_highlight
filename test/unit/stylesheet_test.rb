@@ -1,5 +1,4 @@
 require 'minitest/autorun'
-require_relative '../../lib/redmine_priority_highlight/version'
 require_relative '../../lib/redmine_priority_highlight/stylesheet'
 
 # Runs without Redmine: ruby test/unit/stylesheet_test.rb
@@ -28,9 +27,9 @@ class StylesheetTest < Minitest::Test
   end
 
   def test_digest_changes_with_colors_and_version_not_with_order
-    a = Sheet.digest({1 => '#adb5bd', 2 => '#fa5252'})
-    assert_equal a, Sheet.digest({2 => '#fa5252', 1 => '#adb5bd'})
-    refute_equal a, Sheet.digest({1 => '#adb5bd', 2 => '#ff922b'})
+    a = Sheet.digest({1 => '#adb5bd', 2 => '#fa5252'}, '1.0.0')
+    assert_equal a, Sheet.digest({2 => '#fa5252', 1 => '#adb5bd'}, '1.0.0')
+    refute_equal a, Sheet.digest({1 => '#adb5bd', 2 => '#ff922b'}, '1.0.0')
     refute_equal a, Sheet.digest({1 => '#adb5bd', 2 => '#fa5252'}, '9.9.9')
   end
 end

@@ -2,7 +2,7 @@ module RedminePriorityHighlight
   class Hooks < Redmine::Hook::ViewListener
     def view_layouts_base_html_head(context)
       map = RedminePriorityHighlight.color_map
-      href = priority_highlight_path(v: Stylesheet.digest(map), format: 'css')
+      href = priority_highlight_path(v: Stylesheet.digest(map, VERSION), format: 'css')
 
       tag.link(rel: 'stylesheet', href: href) + query_form_script(context[:controller])
     end

@@ -1,4 +1,6 @@
 module RedminePriorityHighlight
+  VERSION = '0.1.0'.freeze
+
   # { priority_id => '#rrggbb' }; priorities without a valid color are omitted,
   # so Redmine's own styling stays in effect for them.
   def self.color_map
@@ -13,7 +15,6 @@ module RedminePriorityHighlight
   end
 end
 
-require_relative 'redmine_priority_highlight/version'
 require_relative 'redmine_priority_highlight/stylesheet'
 require_relative 'redmine_priority_highlight/default_scheme'
 require_relative 'redmine_priority_highlight/issue_query_patch'
